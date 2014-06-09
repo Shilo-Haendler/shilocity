@@ -1,0 +1,74 @@
+<head>
+<title>Javascript testing </title>
+</head>
+<body>
+<script language="javascript">
+
+//generated code by the module pattern
+var myService = (function () {
+
+	//private
+	var param1 = "default1";
+	var param2 = "default2";
+	var param3 = "default3";
+	
+	
+	//public
+	return {
+		
+		getParam1: function(){return param1;},
+		setParam1: function(value){param1=value;},
+		getParam2: function(){return param2;},
+		setParam2: function(value){param2=value;},
+		getParam3: function(){return param3;},
+		setParam3: function(value){param3=value;},
+	
+		cleanse:function(){
+		
+			//import the task API
+			//taskAPI.execute_task(myService)
+			alert("executing with parameters: param1="+param1 + "; param2=" + param2 + "; param3="+param3 + ";");
+		},
+		
+		preview:function(){/*this can be generated only if congfigured to support preview*/},
+		execute:function(){cleanse();}
+		
+	};
+})();
+
+var metadata = (function()
+{
+	//private
+	
+	//public
+	return {
+	
+		isCleanse: function(){return true;},
+		isMatch: function(){return false;},
+		isMerge: function(){return false;},
+		
+		
+		
+		getOverridables:function(){return ['param1','param2','param3'];},
+		getPlan:function(){return "<planXML/>";/*get it from the repository by name and deployed package*/},
+		getName:function(){return 'myService';}
+		
+		
+	};
+	
+})();
+
+function getService(){return myService;}
+function getMetadata(){return metadata;}
+
+//consumer
+
+var service = getService();
+var descriptor = getMetadata();
+alert("service plan:" + descriptor.getPlan());
+
+service.setParam1('new value');
+service.cleanse();
+
+</script>
+</body>
